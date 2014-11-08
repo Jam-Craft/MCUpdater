@@ -62,6 +62,7 @@ public class UpdaterMain {
             readMods(new File(gameDir, "mods"));
             window.setCurrentTask("Reading " + local.getRemoteJson().toString() + ".", false);
             getInfo();
+            window.setCurrentTask("Checking for changes", false);
             window.setMaximum(remote.getModsList().size() + (remote.getConfig() != null ?1:0));
             window.release();
             try {
@@ -232,5 +233,9 @@ public class UpdaterMain {
                     else if (lib.getName().endsWith(".jar"))
                         files.add(lib);
         return files;
+    }
+
+    public LogHelper getLogger(){
+        return logger;
     }
 }
