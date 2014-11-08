@@ -37,6 +37,6 @@ public class DownloadMD5Task extends DownloadTask implements IPossibleTask {
 
     @Override
     public boolean runIfNeeded() {
-        return needed || run();
+        return !needed || run();
     }
 }
