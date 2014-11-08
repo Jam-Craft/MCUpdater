@@ -13,14 +13,14 @@ import java.net.URL;
  */
 public class DownloadMD5Task extends DownloadTask implements IPossibleTask {
 
-    private boolean needed;
+    protected boolean needed;
 
     public DownloadMD5Task(UpdaterMain mcup, URL source, File destination, String hash){
         super(mcup, source, destination, hash);
         needed = !destination.exists() || !compareMD5(destination, hash);
     }
 
-    private boolean compareMD5(File file, String expected){
+    protected boolean compareMD5(File file, String expected){
         try {
             return Files.hash(file, Hashing.md5()).toString().equalsIgnoreCase(expected);
         } catch (IOException e) {
