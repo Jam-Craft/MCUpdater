@@ -92,7 +92,7 @@ public class Downloader {
 
     }
 
-    private static void downloadFileWithHashCheck(URL source, File destination, String hash,
+    public static void downloadFileWithHashCheck(URL source, File destination, String hash,
             int tries) {
         boolean flag = false;
         int i = 0;
@@ -115,7 +115,7 @@ public class Downloader {
         }
     }
 
-    private static void downloadFile(URL source, File destination) throws IOException {
+    public static void downloadFile(URL source, File destination) throws IOException {
         URLConnection conn = source.openConnection();
         conn.setRequestProperty(
                 "User-Agent",
@@ -126,12 +126,12 @@ public class Downloader {
         in.close();
     }
 
-    private static boolean downloadFileWithHashCheck(URL source, File destination, String md5sum)
+    public static boolean downloadFileWithHashCheck(URL source, File destination, String md5sum)
             throws IOException {
         return downloadFileWithHashCheck(source, destination, md5sum, Hashing.md5());
     }
 
-    private static boolean downloadFileWithHashCheck(URL source, File destination, String hash,
+    public static boolean downloadFileWithHashCheck(URL source, File destination, String hash,
             HashFunction hashType) throws IOException {
         downloadFile(source, destination);
         return checkHash(destination, hash, hashType);
